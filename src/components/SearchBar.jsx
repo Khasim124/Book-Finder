@@ -17,6 +17,7 @@ export default function SearchBar({ onSearch }) {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         className="search-input"
+        aria-label="Search books"
       />
       <button onClick={handleSearch} className="search-btn">
         Search

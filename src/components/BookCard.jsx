@@ -1,9 +1,10 @@
 import React from "react";
 
 export default function BookCard({ book }) {
+  // Pick cover or fallback
   const coverUrl = book.cover_i
     ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
-    : "/no-cover.png"; // <-- local placeholder in public/
+    : "/no-cover.svg";
 
   return (
     <div className="book-card">
@@ -14,18 +15,22 @@ export default function BookCard({ book }) {
       >
         <img
           src={coverUrl}
-          alt={`Cover of ${book.title}`}
+          alt={book.title ? `Cover of ${book.title}` : "No cover available"}
           className="book-cover"
-          onError={(e) => (e.target.src = "/no-cover.png")}
+          onError={(e) => {
+            e.target.onerror = null; // avoid infinite loop
+            e.target.src = "/no-cover.svg";
+          }}
         />
       </a>
-      <h3 className="book-title">{book.title}</h3>
-      <p className="book-author">
-        {book.author_name ? book.author_name[0] : "Unknown Author"}
-      </p>
-      <p className="book-year">
-        {book.first_publish_year ? book.first_publish_year : "Year N/A"}
-      </p>
+
+      <div className="book-info">
+        <h3 className="book-title">{book.title || "Untitled"}</h3>
+        <p className="book-author">
+          {book.author_name?.[0] || "Unknown Author"}
+        </p>
+        <p className="book-year">{book.first_publish_year || "Year N/A"}</p>
+      </div>
     </div>
   );
 }

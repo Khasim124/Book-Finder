@@ -43,9 +43,14 @@ export default function FiltersButton({ onFilter }) {
               value={year}
               onChange={(e) => setYear(e.target.value)}
               placeholder="e.g., 2020"
+              aria-label="Filter by year"
             />
           </label>
-          <button onClick={applyFilter} className="apply-btn">
+          <button
+            onClick={applyFilter}
+            className="apply-btn"
+            aria-label="Apply filters"
+          >
             Apply
           </button>
         </div>

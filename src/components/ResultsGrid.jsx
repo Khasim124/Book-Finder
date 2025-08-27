@@ -13,7 +13,7 @@ export default function ResultsGrid({ books }) {
   return (
     <div className="results-grid">
       {books.map((book, idx) => (
-        <BookCard key={idx} book={book} />
+        <BookCard key={book.key || idx} book={book} />
       ))}
     </div>
   );

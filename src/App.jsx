@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Tabs from "./components/Tabs";
 import FiltersButton from "./components/FiltersButton";
 import SearchBar from "./components/SearchBar";
@@ -7,7 +7,8 @@ import ResultsGrid from "./components/ResultsGrid";
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("history");
-  const [books, setBooks] = useState([]);
+  const [allBooks, setAllBooks] = useState([]); // raw API response
+  const [books, setBooks] = useState([]); // filtered books
   const [history, setHistory] = useState([]);
   const [filters, setFilters] = useState({});
   const [loading, setLoading] = useState(false);
@@ -21,11 +22,14 @@ export default function App() {
     try {
       const url = `https://openlibrary.org/search.json?${type}=${encodeURIComponent(
         query
-      )}`;
+      )}&limit=30`;
       const res = await fetch(url);
       const data = await res.json();
 
-      setBooks(applyFilters(data.docs || []));
+      const docs = data.docs || [];
+      setAllBooks(docs);
+      setBooks(applyFilters(docs));
+
       setHistory((prev) =>
         [query, ...prev.filter((h) => h !== query)].slice(0, 5)
       );
@@ -44,6 +48,10 @@ export default function App() {
         )
       : data;
   };
+
+  useEffect(() => {
+    setBooks(applyFilters(allBooks));
+  }, [filters, allBooks]);
 
   return (
     <div className="app">
