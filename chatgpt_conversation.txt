@@ -1,0 +1,7 @@
+Prompt:
+"Help me design a React Book Finder that uses the Open Library Search API. I want components: SearchBar, BookList, BookCard, and a fetch function with error handling. Also suggest UI and a short video demo script."
+
+ChatGPT response (excerpt):
+- Suggested file structure: src/api/openLibrary.js, src/components/SearchBar.jsx...
+- Provided fetchBooksByTitle example, debounce hook, and sample App.jsx (received code).
+- Suggested video demo script and README contents.

@@ -1,0 +1,9 @@
+Hi — I'm Shaik Peda Khasim, Candidate ID Naukri0925.
+This is my Book Finder app for Aganitha.
+(Show the app)
+1) Search for "harry potter" — results appear with covers and authors.
+2) Show no-results handling (search for random string).
+3) Resize to mobile to show responsiveness.
+4) Open key code files (src/api/openLibrary.js and src/components/BookCard.jsx).
+5) Show chatgpt_conversation.txt (LLM proof) and README with Candidate ID.
+Thank you — I can explain choices in interview.

@@ -1,12 +1,28 @@
-# React + Vite
+# Book Finder — Aganitha Take Home
+**Candidate ID:** Naukri0925  
+**Name:** Shaik Peda Khasim
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Live demo
+(Deployed link / CodeSandbox link) — add here
 
-Currently, two official plugins are available:
+## What I built
+A small React app that searches books using Open Library Search API:
+- Search by title (debounced)
+- Shows cover (if available), author(s), publish year
+- Responsive layout and error handling
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## How to run locally
+1. `npm install`
+2. `npm run dev`
+3. Open http://localhost:5173
 
-## Expanding the ESLint configuration
+## LLM / AI proof
+`chatgpt_conversation.txt` contains the conversation with ChatGPT used to plan and implement the app.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Repo & Deploy
+- GitHub: https://github.com/YOURUSERNAME/aganitha-book-finder
+- Deployed: https://codesandbox.io/ or StackBlitz link
+
+## Notes
+- Candidate ID: **Naukri0925**
+- Video demo: link or `video_demo.mp4`
