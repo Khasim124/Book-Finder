@@ -1,7 +1,32 @@
+ChatGPT Conversation — Book Finder App
+
+Candidate ID: Naukri0925
+Name: Shaik Peda Khasim
+
+---
+
 Prompt:
 "Help me design a React Book Finder that uses the Open Library Search API. I want components: SearchBar, BookList, BookCard, and a fetch function with error handling. Also suggest UI and a short video demo script."
 
-ChatGPT response (excerpt):
-- Suggested file structure: src/api/openLibrary.js, src/components/SearchBar.jsx...
-- Provided fetchBooksByTitle example, debounce hook, and sample App.jsx (received code).
-- Suggested video demo script and README contents.
+---
+
+ChatGPT Suggestions (Excerpt):
+
+1. **File Structure**
+- src/api/openLibrary.js         → for API fetch functions
+- src/components/SearchBar.jsx   → search input with debounce
+- src/components/BookList.jsx    → list of BookCard components
+- src/components/BookCard.jsx    → individual book details display
+- src/App.jsx                    → main app, manages state and fetch
+
+2. **API Fetch Function**
+- `fetchBooksByTitle(title)`:
+  ```javascript
+  try {
+      const response = await fetch(`https://openlibrary.org/search.json?title=${title}`);
+      const data = await response.json();
+      return data.docs;
+  } catch (error) {
+      console.error("Error fetching books:", error);
+      return [];
+  }
