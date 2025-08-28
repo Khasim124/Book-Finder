@@ -10,6 +10,11 @@ export default function FiltersButton({ onFilter }) {
     setShow(false);
   };
 
+  const clearFilter = () => {
+    setYear("");
+    onFilter({});
+  };
+
   useEffect(() => {
     if (show && popupRef.current) {
       const rect = popupRef.current.getBoundingClientRect();
@@ -33,7 +38,6 @@ export default function FiltersButton({ onFilter }) {
       >
         Filters
       </button>
-
       {show && (
         <div className="filters-popup" ref={popupRef}>
           <label>
@@ -44,15 +48,27 @@ export default function FiltersButton({ onFilter }) {
               onChange={(e) => setYear(e.target.value)}
               placeholder="e.g., 2020"
               aria-label="Filter by year"
+              min="1500"
+              max={new Date().getFullYear()}
             />
           </label>
-          <button
-            onClick={applyFilter}
-            className="apply-btn"
-            aria-label="Apply filters"
-          >
-            Apply
-          </button>
+          <div style={{ marginTop: "8px", display: "flex", gap: "8px" }}>
+            <button
+              onClick={applyFilter}
+              className="apply-btn"
+              aria-label="Apply filters"
+            >
+              Apply
+            </button>
+            <button
+              onClick={clearFilter}
+              className="apply-btn"
+              style={{ background: "#dc3545" }}
+              aria-label="Clear filters"
+            >
+              Clear
+            </button>
+          </div>
         </div>
       )}
     </div>

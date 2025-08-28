@@ -1,9 +1,48 @@
-Hi — I'm Shaik Peda Khasim, Candidate ID Naukri0925.
-This is my Book Finder app for Aganitha.
-(Show the app)
-1) Search for "harry potter" — results appear with covers and authors.
-2) Show no-results handling (search for random string).
-3) Resize to mobile to show responsiveness.
-4) Open key code files (src/api/openLibrary.js and src/components/BookCard.jsx).
-5) Show chatgpt_conversation.txt (LLM proof) and README with Candidate ID.
-Thank you — I can explain choices in interview.
+Book Finder App — Video Demo Instructions
+
+Candidate ID: Naukri0925
+Name: Shaik Peda Khasim
+
+Purpose:
+This video demonstrates the features, responsiveness, and key implementation of the Book Finder React app.
+
+Steps to Record:
+
+1. Start with a greeting:
+   "Hi — I'm Shaik Peda Khasim, Candidate ID Naukri0925. This is my Book Finder app for Aganitha."
+
+2. Demonstrate basic search:
+   - Search for "Harry Potter".
+   - Show that results display book covers, titles, authors, and publish year.
+
+3. Demonstrate no-results handling:
+   - Search for a random string like "asdjklqwe".
+   - Show the "No results found" message.
+
+4. Show responsiveness:
+   - Resize the browser window to a mobile layout.
+   - Highlight how the results grid adapts to smaller screens.
+
+5. Show quick search and recent searches:
+   - Click on a quick search term (e.g., "Programming").
+   - Show that it updates the results.
+   - Switch to "Recent Searches" tab and demonstrate clicking a previous search to re-run it.
+
+6. Highlight filters:
+   - Open the filter popup.
+   - Apply a year filter (e.g., 2020).
+   - Clear the filter to reset results.
+
+7. Show key code files:
+   - Open `src/api/openLibrary.js`.
+   - Open `src/components/BookCard.jsx`.
+   - Explain briefly how API fetch and book cards are handled.
+
+8. End with AI proof and repo info:
+   - Show `chatgpt_conversation.txt`.
+   - Mention GitHub repository and live demo link:
+     GitHub: https://github.com/Khasim124/Book-Finder
+     Live: https://662jds-5173.csb.app/
+
+Closing:
+"Thank you — I can explain choices in the interview."

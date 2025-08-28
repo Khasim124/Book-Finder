@@ -4,11 +4,12 @@ import FiltersButton from "./components/FiltersButton";
 import SearchBar from "./components/SearchBar";
 import QuickSearches from "./components/QuickSearches";
 import ResultsGrid from "./components/ResultsGrid";
+import { fetchBooks } from "./api/openLibrary";
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState("history");
-  const [allBooks, setAllBooks] = useState([]); // raw API response
-  const [books, setBooks] = useState([]); // filtered books
+  const [activeTab, setActiveTab] = useState("Recent Searches");
+  const [allBooks, setAllBooks] = useState([]);
+  const [books, setBooks] = useState([]);
   const [history, setHistory] = useState([]);
   const [filters, setFilters] = useState({});
   const [loading, setLoading] = useState(false);
@@ -18,18 +19,10 @@ export default function App() {
     if (!query.trim()) return;
     setLoading(true);
     setError(null);
-
     try {
-      const url = `https://openlibrary.org/search.json?${type}=${encodeURIComponent(
-        query
-      )}&limit=30`;
-      const res = await fetch(url);
-      const data = await res.json();
-
-      const docs = data.docs || [];
+      const docs = await fetchBooks(query, type);
       setAllBooks(docs);
       setBooks(applyFilters(docs));
-
       setHistory((prev) =>
         [query, ...prev.filter((h) => h !== query)].slice(0, 5)
       );
@@ -37,17 +30,16 @@ export default function App() {
       setError("Failed to fetch books. Try again.");
     } finally {
       setLoading(false);
-      if (activeTab === "history") setActiveTab("Search by subject"); // auto switch
+      if (activeTab === "Recent Searches") setActiveTab("Results");
     }
   };
 
-  const applyFilters = (data) => {
-    return filters.year
+  const applyFilters = (data) =>
+    filters.year
       ? data.filter(
           (book) => book.first_publish_year === parseInt(filters.year, 10)
         )
       : data;
-  };
 
   useEffect(() => {
     setBooks(applyFilters(allBooks));
@@ -69,7 +61,7 @@ export default function App() {
       {loading && <p className="loading">Loading...</p>}
       {error && <p className="error">{error}</p>}
 
-      {activeTab === "history" ? (
+      {activeTab === "Recent Searches" ? (
         <div className="history">
           <h3>Recent Searches</h3>
           <ul>
@@ -78,6 +70,7 @@ export default function App() {
                 <button
                   className="history-btn"
                   onClick={() => handleSearch(item)}
+                  aria-label={`Search again for ${item}`}
                 >
                   {item}
                 </button>

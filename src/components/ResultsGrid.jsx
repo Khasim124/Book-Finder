@@ -11,7 +11,12 @@ export default function ResultsGrid({ books }) {
   }
 
   return (
-    <div className="results-grid">
+    <div
+      className="results-grid"
+      role="region"
+      aria-live="polite"
+      aria-label="Search results"
+    >
       {books.map((book, idx) => (
         <BookCard key={book.key || idx} book={book} />
       ))}

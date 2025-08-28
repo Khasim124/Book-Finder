@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function SearchBar({ onSearch }) {
   const [query, setQuery] = useState("");
 
-  const handleSearch = () => {
-    if (query.trim() !== "") {
-      onSearch(query);
-    }
-  };
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (query.trim() !== "") onSearch(query);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [query]);
 
   return (
     <div className="search-bar">
@@ -19,9 +20,6 @@ export default function SearchBar({ onSearch }) {
         className="search-input"
         aria-label="Search books"
       />
-      <button onClick={handleSearch} className="search-btn">
-        Search
-      </button>
     </div>
   );
 }
